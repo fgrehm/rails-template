@@ -132,3 +132,8 @@ commit 'Convert application.js to coffee and application.css to sass'
 
 system 'bundle exec guard init'
 commit 'Add Guardfile'
+
+
+system 'rm README.rdoc'
+remote_template 'README.md', 'README.md'
+commit 'Add README.md'

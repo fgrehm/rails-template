@@ -87,6 +87,10 @@ system 'cp config/database.yml.sample config/database.yml'
 commit 'Add sample database yml'
 
 
+system 'rake db:migrate db:setup'
+commit 'Update DB schema'
+
+
 initializer 'generators.rb', <<-RUBY
 Rails.application.config.generators do |g|
   g.stylesheets    = false

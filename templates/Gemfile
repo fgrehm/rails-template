@@ -1,0 +1,72 @@
+source 'https://rubygems.org'
+ruby '1.9.3'
+
+gem 'rails', '~> 3.2.9'
+gem 'unicorn'
+# gem 'sidekiq'
+# gem 'memcachier'
+# gem 'dalli'
+
+gem '<%= @template_language %>-rails'
+
+gem 'pg'
+# gem 'postgres_ext'
+gem 'seedbank', require: false
+
+# TODO: Upgrade to ~> 3.0 when unecessary dependencies on tinder gets removed,
+#       see https://github.com/smartinez87/exception_notification/issues/101
+#       for more info
+gem 'exception_notification', '~> 2.6.1'
+
+gem 'delocalize'
+gem 'responders'
+
+gem 'simple_form'
+# gem 'client_side_validations'
+# gem 'client_side_validations-simple_form'
+# gem 'kaminari'
+# gem 'actionmailer_inline_css'
+# gem 'menu_builder'
+
+group :development do
+  gem 'debugger'
+  gem 'foreman', require: false
+end
+
+group :development, :test do
+  gem 'pry-rails'
+
+  gem 'rb-inotify', require: false
+
+  gem 'factory_girl_rails', require: false
+  gem 'forgery',            require: false
+
+  gem 'guard',               require: false
+  gem 'guard-bundler',       require: false
+  gem 'guard-rspec',         require: false
+  gem 'guard-ctags-bundler', require: false
+  gem 'guard-jasmine',       require: false
+
+  gem 'rspec-rails'
+  gem 'database_cleaner', require: false
+  gem 'simplecov',        require: false
+  gem 'rspec-spies',      require: false
+  gem 'shoulda-matchers', require: false
+
+  gem 'poltergeist',    require: false
+  gem 'capybara',       require: false
+  gem 'capybara-email', require: false
+
+  gem 'jasminerice'
+end
+
+group :assets do
+  gem 'jquery-rails'
+  # gem 'jquery-ui-rails'
+  # gem 'backbone-on-rails'
+  # gem 'bootstrap-sass-rails'
+
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier',     '>= 1.0.3'
+end

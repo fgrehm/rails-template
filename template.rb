@@ -1,10 +1,12 @@
-# rails new APP_NAME -m /path/to/template.rb -T --skip-bundle
 
 require 'open-uri'
 
-def remote_template(source, destination, config = {})
-  # TODO: if ENV['LOCAL'] ...
-  source  = File.expand_path(File.dirname(__FILE__)) + "/templates/#{source}"
+def remote_template(source, destination = source, config = {})
+  if ENV['LOCAL']
+    source  = File.expand_path(File.dirname(__FILE__)) + "/templates/#{source}"
+  else
+    souce = "https://raw.github.com/fgrehm/rails-template/master/#{source}"
+  end
   context = instance_eval('binding')
 
   create_file destination, nil, config do

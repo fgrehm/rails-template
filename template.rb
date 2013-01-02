@@ -100,6 +100,8 @@ Rails.application.config.generators do |g|
   g.javascripts    = false
   g.helpers        = false
   g.test_framework = :rspec
+
+  g.fixture_replacement :factory_girl
 end
 RUBY
 commit 'Add generators initializer'

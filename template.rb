@@ -14,15 +14,6 @@ def remote_template(source, destination = source, config = {})
   end
 end
 
-def rewrite_file(file, content)
-  system "rm #{file} && > #{file}"
-  append_to_file(file, content)
-  # first sed: remove duplicated empty lines
-  # second sed: remove lines with whitespaces
-  system "cat #{file} | sed '/^$/N;/^\\n$/D' | sed '/^ *$/d' > sed_output"
-  system "mv sed_output #{file}"
-end
-
 def prompt(question, options)
   answer = ask("     \e[1m\e[32mpromp".rjust(10) + "  \e[0m#{question} \e[33m[#{options[:default_answer]}]\e[0m").strip
   answer.present? ? answer : options[:default_answer]

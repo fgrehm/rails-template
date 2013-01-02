@@ -153,9 +153,24 @@ commit 'Add Unicorn config'
 
 remote_template 'Procfile', 'Procfile'
 remote_template 'dot_env.sample', '.env.sample'
+system 'cp .env.sample .env'
 commit 'Add Procfile to start unicorn loading config file'
 
 
 system 'rm README.rdoc'
 remote_template 'README.md', 'README.md'
 commit 'Add README.md'
+
+
+logger_fix = <<-RUBY
+# Fix Rails' logger on Heroku
+  # See: http://help.papertrailapp.com/discussions/questions/116-logging-from-heroku-apps-using-unicorn
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
+RUBY
+application logger_fix, :env => 'production'
+commit 'Fix Rails logger on Heroku'
+
+
+system 'cp config/environments/production.rb config/environments/staging.rb'
+commit 'Replicate production configs for staging'

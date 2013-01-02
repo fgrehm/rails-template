@@ -140,6 +140,12 @@ system 'bundle exec guard init'
 commit 'Add Guardfile'
 
 
+remote_template 'Vagrantfile',  'Vagrantfile'
+remote_template 'setup_vagrant',  'script/setup_vagrant'
+chmod 'script/setup_vagrant', 0755
+commit 'Set up Vagrant'
+
+
 system 'rm README.rdoc'
 remote_template 'README.md', 'README.md'
 commit 'Add README.md'

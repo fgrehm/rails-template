@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo 'Setting up configs'
+cp .env.sample .env
+cp config/database.yml.sample config/database.yml
+
+echo 'Installing vagrant-notify'
+vagrant gem install vagrant-notify
+
+echo 'Setting up virtual machine'
+vagrant up
+vagrant ssh -c 'sudo apt-get update && sudo apt-get upgrade -y'
+vagrant reload
+vagrant ssh -c 'cd /vagrant && bundle && rbenv rehash && gem regenerate_binstubs && rake db:setup && RAILS_ENV=test rake db:migrate'

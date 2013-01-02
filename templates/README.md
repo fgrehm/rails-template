@@ -2,7 +2,9 @@
 
 ## Initial setup
 
-* Setup PostgreSQL
+### Without Vagrant
+
+* Install and setup PostgreSQL
   * Ubuntu
     * http://socrateos.blogspot.com.br/2012/08/installing-postgresql-91-on-ubuntu-1204.html
     * https://help.ubuntu.com/community/PostgreSQL
@@ -18,4 +20,22 @@
 cp config/database.yml.sample config/database.yml
 bundle install
 bundle exec rake db:reset db:setup
+```
+
+### With Vagrant (experimental)
+
+Make sure you have Vagrant and VirtualBox installed on your machine, check if you
+have the [prerequisites](http://vagrantup.com/v1/docs/nfs.html#prerequisites)
+to use NFS Shared Folders with Vagrant and run:
+
+```terminal
+script/setup_vagrant
+```
+
+#### Running the app
+
+```terminal
+[host-machine] $ vagrant ssh
+[vagrant-vm]   $ cd /vagrant
+[vagrant-vm]   $ foreman start
 ```

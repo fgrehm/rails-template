@@ -112,7 +112,8 @@ task :coverage do
   Rake::Task["spec"].execute
 end
 CODE
-commit 'Install rspec'
+commit 'Install rspec with simplecov support'
+
 
 empty_directory 'spec/javascripts'
 inside 'spec/javascripts' do
@@ -140,10 +141,19 @@ system 'bundle exec guard init'
 commit 'Add Guardfile'
 
 
-remote_template 'Vagrantfile',  'Vagrantfile'
-remote_template 'setup_vagrant',  'script/setup_vagrant'
+remote_template 'Vagrantfile', 'Vagrantfile'
+remote_template 'setup_vagrant', 'script/setup_vagrant'
 chmod 'script/setup_vagrant', 0755
 commit 'Set up Vagrant'
+
+
+remote_template 'unicorn.rb', 'config/unicorn.rb'
+commit 'Add Unicorn config'
+
+
+remote_template 'Procfile', 'Procfile'
+remote_template 'dot_env.sample', '.env.sample'
+commit 'Add Procfile to start unicorn loading config file'
 
 
 system 'rm README.rdoc'

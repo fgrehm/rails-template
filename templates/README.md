@@ -18,9 +18,17 @@
 
 ```terminal
 cp config/database.yml.sample config/database.yml
+cp .env.sample .env
 bundle install
 bundle exec rake db:reset db:setup
 ```
+
+#### Running the app
+
+`gem install foreman` if it is not installed
+
+`bundle exec foreman start` will fire up a unicorn server at
+http://localhost:8080
 
 ### With Vagrant (experimental)
 

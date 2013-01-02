@@ -91,6 +91,18 @@ system 'rake db:migrate db:setup'
 commit 'Update DB schema'
 
 
+empty_directory 'db/seeds'
+system 'touch db/seeds/.gitkeep'
+commit 'Add db/seeds folder'
+
+
+rakefile "seedbank.rake", <<-CODE
+require 'seedbank'
+Seedbank.load_tasks
+CODE
+commit 'Load seedbank rake task'
+
+
 initializer 'generators.rb', <<-RUBY
 Rails.application.config.generators do |g|
   g.stylesheets    = false
@@ -112,7 +124,7 @@ task :coverage do
   Rake::Task["spec"].execute
 end
 CODE
-commit 'Install rspec with simplecov support'
+commit 'Setup rspec with simplecov support'
 
 
 empty_directory 'spec/javascripts'

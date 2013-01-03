@@ -4,8 +4,9 @@ ruby '1.9.3'
 gem 'rails', '~> 3.2.9'
 gem 'unicorn'
 # gem 'sidekiq'
-# gem 'memcachier'
-# gem 'dalli'
+gem 'memcachier'
+gem 'dalli'
+gem 'cache_digests'
 
 gem '<%= @template_language %>-rails'
 

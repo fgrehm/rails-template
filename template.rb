@@ -64,6 +64,10 @@ gsub_file 'config/application.rb', /^\s*#\s*(config\.i18n\.default_locale\s*=\s*
 commit 'Set pt-br as default locale'
 
 
+inject_into_file 'app/controllers/application_controller.rb', "\n  respond_to :html", :before => "\n  protect_from_forgery"
+commit 'Setup application controller to respond to html'
+
+
 remove_file 'public/index.html'
 remove_file 'app/assets/images/rails.png'
 commit 'Remove static files'

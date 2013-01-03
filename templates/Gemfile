@@ -55,6 +55,7 @@ group :development, :test do
 
   gem 'jasminerice'
 
+  gem 'rails-footnotes'
   gem 'bullet'
 end
 

@@ -200,3 +200,7 @@ config.after_initialize do
 RUBY
 application bullet_init, :env => 'development'
 commit 'Setup bullet'
+
+
+create_file 'config/initializers/rails_footnotes.rb', open('https://raw.github.com/josevalim/rails-footnotes/master/lib/generators/templates/rails_footnotes.rb').read
+commit 'Setup rails footnotes'

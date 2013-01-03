@@ -185,8 +185,15 @@ application logger_fix, :env => 'production'
 commit 'Fix Rails logger on Heroku'
 
 
+gsub_file 'config/environments/production.rb',
+          /^\s*#\s*(config\.action_controller\.asset_host\s*=\s*).*$/,
+          "  \\1\"//\#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com\"\n  config.action_mailer.asset_host = \"http:\#{config.action_controller.asset_host}\""
+commit 'Setup asset sync'
+
+
 system 'cp config/environments/production.rb config/environments/staging.rb'
 commit 'Replicate production configs for staging'
+
 
 bullet_init = <<-RUBY
 config.after_initialize do

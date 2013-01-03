@@ -47,3 +47,48 @@ script/setup_vagrant
 [vagrant-vm]   $ cd /vagrant
 [vagrant-vm]   $ foreman start
 ```
+
+## Setting up production / staging
+
+### Amazon S3 bucket
+
+Create a bucket with `public read` access and enable CORS on it so that [custom fonts get loaded on Firefox](
+http://stackoverflow.com/questions/11261805/rails-3-font-face-failing-in-production-with-firefox).
+
+### Heroku
+
+#### Production
+
+```terminal
+heroku addons:add memcachier:dev --app <%= app_const_base.underscore %>
+
+heroku labs:enable user-env-compile --app <%= app_const_base.underscore %>
+
+heroku config:add --app <%= app_const_base.underscore %> FOG_PROVIDER=AWS \
+       AWS_ACCESS_KEY_ID='<access-key>' \
+       AWS_SECRET_ACCESS_KEY='<secret-key>' \
+       FOG_REGION='<fog-region>' \
+       FOG_DIRECTORY='<bucket-name>' \
+       ASSET_SYNC_GZIP_COMPRESSION=true \
+       ASSET_SYNC_MANIFEST=false \
+       ASSET_SYNC_EXISTING_REMOTE_FILES=keep \
+       TZ='America/Sao_Paulo'
+```
+
+#### Staging
+
+```
+heroku addons:add memcachier:dev --app <%= app_const_base.underscore %>-staging
+
+heroku labs:enable user-env-compile --app <%= app_const_base.underscore %>-staging
+
+heroku config:add --app <%= app_const_base.underscore %>-staging FOG_PROVIDER=AWS \
+       AWS_ACCESS_KEY_ID='<access-key>' \
+       AWS_SECRET_ACCESS_KEY='<secret-key>' \
+       FOG_REGION='<fog-region>' \
+       FOG_DIRECTORY='<bucket-name>' \
+       ASSET_SYNC_GZIP_COMPRESSION=true \
+       ASSET_SYNC_MANIFEST=false \
+       ASSET_SYNC_EXISTING_REMOTE_FILES=keep \
+       TZ='America/Sao_Paulo'
+```

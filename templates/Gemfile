@@ -20,7 +20,9 @@ gem 'seedbank', require: false
 gem 'exception_notification', '~> 2.6.1'
 
 gem 'delocalize'
+gem 'inherited_resources'
 gem 'responders'
+gem 'strong_parameters'
 
 gem 'simple_form'
 # gem 'client_side_validations'

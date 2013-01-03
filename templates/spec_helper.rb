@@ -20,7 +20,6 @@ require 'database_cleaner'
 require 'rspec-spies'
 require 'forgery'
 require 'shoulda-matchers'
-require 'rspec-spies'
 require 'factory_girl_rails'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}

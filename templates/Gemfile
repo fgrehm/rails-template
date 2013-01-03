@@ -47,6 +47,7 @@ group :development, :test do
   gem 'database_cleaner', require: false
   gem 'simplecov',        require: false
   gem 'rspec-spies',      require: false
+  gem 'rspec-fire',       require: false
   gem 'shoulda-matchers', require: false
 
   gem 'poltergeist',    require: false

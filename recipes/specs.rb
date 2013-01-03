@@ -18,6 +18,7 @@ Extras:
  * capybara with poltergeist
  * capybara-email
  * rspec-spies
+ * rspec-fire
  * shoulda-matchers
  * factory_girl
  * forgery

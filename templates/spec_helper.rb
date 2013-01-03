@@ -18,6 +18,7 @@ require 'capybara/email/rspec'
 
 require 'database_cleaner'
 require 'rspec-spies'
+require 'rspec/fire'
 require 'forgery'
 require 'shoulda-matchers'
 require 'factory_girl_rails'
@@ -38,6 +39,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include RSpec::Fire
   config.include Capybara::DSL,         :example_group => { :file_path => /\bspec\/acceptance\// }
   # config.include Warden::Test::Helpers, :example_group => { :file_path => /\bspec\/acceptance\// }
 

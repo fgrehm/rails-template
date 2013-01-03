@@ -55,6 +55,7 @@ group :development, :test do
 
   gem 'jasminerice'
 
+  gem 'quiet_assets'
   gem 'rails-footnotes'
   gem 'bullet'
 end

@@ -29,9 +29,6 @@ gem 'simple_form'
 # gem 'menu_builder'
 
 group :development, :test do
-  gem 'debugger'
-  gem 'pry-rails'
-
   gem 'rb-inotify', require: false
 
   gem 'factory_girl_rails', require: false
@@ -55,9 +52,13 @@ group :development, :test do
 
   gem 'jasminerice'
 
+  gem 'debugger'
+  gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rails-footnotes'
   gem 'bullet'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :assets do

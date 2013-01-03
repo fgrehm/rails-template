@@ -43,4 +43,7 @@ Session.vim
 coverage/
 
 # Ignore foreman's env file
-.env
+/.env
+
+# Ignore vagrant config
+/.vagrant

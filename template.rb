@@ -53,6 +53,7 @@ end
 %w(
   after_init
   db
+  strong_parameters
   localization
   responders
   specs

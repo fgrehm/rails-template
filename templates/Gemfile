@@ -28,12 +28,8 @@ gem 'simple_form'
 # gem 'actionmailer_inline_css'
 # gem 'menu_builder'
 
-group :development do
-  gem 'debugger'
-  gem 'foreman', require: false
-end
-
 group :development, :test do
+  gem 'debugger'
   gem 'pry-rails'
 
   gem 'rb-inotify', require: false

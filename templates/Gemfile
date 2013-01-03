@@ -58,6 +58,8 @@ group :development, :test do
   gem 'capybara-email', require: false
 
   gem 'jasminerice'
+
+  gem 'bullet'
 end
 
 group :assets do

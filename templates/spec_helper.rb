@@ -50,7 +50,7 @@ RSpec.configure do |config|
   config.before(type: :request) do
     DatabaseCleaner.strategy = :truncation
     # Warden.test_mode!
-    # clear_emails
+    # TODO: clear_emails
   end
 
   config.after(type: :request) do
